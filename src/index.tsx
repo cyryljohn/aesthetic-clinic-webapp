@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import integrations from './services/integrations';
+
+// Initialize all integrations (Meta Pixel, HubSpot, etc.)
+integrations.initialize();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
