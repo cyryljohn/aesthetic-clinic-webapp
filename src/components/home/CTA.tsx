@@ -1,8 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '../common/Button';
+import calendlyService from '../../services/calendlyService';
 
 const CTA: React.FC = () => {
+  const handleBookingClick = () => {
+    calendlyService.openPopupWidget({
+      text: 'Book Your Free Consultation',
+      color: '#4b93c5',
+    });
+  };
+
   return (
     <section className="bg-gradient-to-br from-primary-600 to-secondary-600 text-white">
       <div className="container-max section-padding">
@@ -21,7 +29,7 @@ const CTA: React.FC = () => {
             Your journey to enhanced natural beauty starts here.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="secondary" size="large">
+            <Button variant="secondary" size="large" onClick={handleBookingClick}>
               Book Free Consultation
             </Button>
             <button className="px-6 py-3 bg-white/10 backdrop-blur-sm text-white font-medium rounded-lg hover:bg-white/20 transition-colors duration-200 border border-white/20">

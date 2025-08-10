@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../common/Button';
+import calendlyService from '../../services/calendlyService';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,6 +16,13 @@ const Header: React.FC = () => {
   ];
   
   const isActive = (path: string) => location.pathname === path;
+  
+  const handleBookingClick = () => {
+    calendlyService.openPopupWidget({
+      text: 'Book Your Free Consultation',
+      color: '#4b93c5',
+    });
+  };
   
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -44,7 +52,7 @@ const Header: React.FC = () => {
                 {item.name}
               </Link>
             ))}
-            <Button variant="primary" size="medium">
+            <Button variant="primary" size="medium" onClick={handleBookingClick}>
               Book Consultation
             </Button>
           </div>
@@ -86,7 +94,7 @@ const Header: React.FC = () => {
                     {item.name}
                   </Link>
                 ))}
-                <Button variant="primary" size="medium" fullWidth>
+                <Button variant="primary" size="medium" fullWidth onClick={handleBookingClick}>
                   Book Consultation
                 </Button>
               </div>

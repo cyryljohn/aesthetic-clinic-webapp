@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
+import Chatbot from './components/chat/Chatbot';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <Chatbot />
       </div>
     </Router>
   );
