@@ -1,18 +1,18 @@
 import React from 'react';
-import AnimatedHero from '../components/home/AnimatedHero';
-import AnimatedServices from '../components/home/AnimatedServices';
-import AnimatedFeatures from '../components/home/AnimatedFeatures';
-import AnimatedTestimonials from '../components/home/AnimatedTestimonials';
-import CTA from '../components/home/CTA';
+import LightHero from '../components/home/LightHero';
+import LightServices from '../components/home/LightServices';
+import LightFeatures from '../components/home/LightFeatures';
+import LightTestimonials from '../components/home/LightTestimonials';
+import LightCTA from '../components/home/LightCTA';
 
 const HomePage: React.FC = () => {
   return (
     <>
-      <AnimatedHero />
-      <AnimatedServices />
-      <AnimatedFeatures />
-      <AnimatedTestimonials />
-      <CTA />
+      <LightHero />
+      <LightServices />
+      <LightFeatures />
+      <LightTestimonials />
+      <LightCTA />
     </>
   );
 };
