@@ -1,15 +1,17 @@
 import React from 'react';
-import Hero from '../components/home/Hero';
-import Services from '../components/home/Services';
-import Features from '../components/home/Features';
+import AnimatedHero from '../components/home/AnimatedHero';
+import AnimatedServices from '../components/home/AnimatedServices';
+import AnimatedFeatures from '../components/home/AnimatedFeatures';
+import AnimatedTestimonials from '../components/home/AnimatedTestimonials';
 import CTA from '../components/home/CTA';
 
 const HomePage: React.FC = () => {
   return (
     <>
-      <Hero />
-      <Services />
-      <Features />
+      <AnimatedHero />
+      <AnimatedServices />
+      <AnimatedFeatures />
+      <AnimatedTestimonials />
       <CTA />
     </>
   );
