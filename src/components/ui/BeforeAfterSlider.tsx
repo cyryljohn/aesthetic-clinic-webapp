@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 interface BeforeAfterSliderProps {
   beforeImage: string;
@@ -16,7 +16,6 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
 }) => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
-  const [hasInteracted, setHasInteracted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleMove = (clientX: number) => {
@@ -26,7 +25,6 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
     const x = clientX - rect.left;
     const percentage = (x / rect.width) * 100;
     setSliderPosition(Math.min(Math.max(percentage, 0), 100));
-    setHasInteracted(true);
   };
 
   const handleMouseMove = (e: MouseEvent) => {
@@ -218,67 +216,6 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
         />
       </motion.div>
 
-      {/* Enhanced Instruction with animation */}
-      <AnimatePresence>
-        {!hasInteracted && (
-          <motion.div
-            className="absolute top-4 left-1/2 transform -translate-x-1/2 pointer-events-none"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ delay: 0.5 }}
-          >
-            <motion.div
-              className="relative"
-              animate={{
-                x: [-10, 10, -10],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-sage-500 to-olive-500 rounded-full blur-md opacity-70" />
-              <div className="relative bg-gradient-to-r from-sage-900/90 to-olive-900/90 backdrop-blur-md px-5 py-2.5 rounded-full shadow-2xl border border-white/20">
-                <div className="flex items-center gap-2">
-                  <motion.svg 
-                    className="w-4 h-4 text-white" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    animate={{
-                      x: [-2, 2, -2],
-                    }}
-                    transition={{
-                      duration: 1,
-                      repeat: Infinity,
-                    }}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3-3m0 0l3 3m-3-3v12m5-12h3m-3 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </motion.svg>
-                  <span className="text-sm font-semibold text-white">Slide to reveal transformation</span>
-                  <motion.svg 
-                    className="w-4 h-4 text-white" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    animate={{
-                      x: [2, -2, 2],
-                    }}
-                    transition={{
-                      duration: 1,
-                      repeat: Infinity,
-                    }}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </motion.svg>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Hover effect indicators */}
       <motion.div
