@@ -90,15 +90,15 @@ export default function TeamDraggableCards() {
       </div>
       
       <DraggableCardContainer className="relative min-h-[800px] w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl">
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-black/20 "></div>
         
-        <div className="relative w-full h-full flex items-center justify-center">
+        <div className="relative w-full h-full flex items-center justify-center ">
           {teamMembers.map((member, index) => (
             <DraggableCardBody 
               key={member.name} 
               className={`absolute w-[420px] p-0 rounded-2xl left-1/2 top-1/2 ${member.offsetX} ${member.offsetY} ${member.rotation} ${member.zIndex}`}
             >
-              <div className={`relative bg-white p-5 pb-7 shadow-[0_15px_60px_rgba(0,0,0,0.6)] rounded-2xl ${member.imageRotation}`}>
+              <div className={`relative bg-white  p-5 pb-7 shadow-[0_15px_60px_rgba(0,0,0,0.6)] rounded-2xl ${member.imageRotation}`}>
                 <div className="relative overflow-hidden rounded-lg">
                   <img
                     src={member.image}
