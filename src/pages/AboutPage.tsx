@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Card from '../components/common/Card';
 import Button from '../components/common/Button';
+import TeamDraggableCards from '../components/about/TeamDraggableCards';
 
 const AboutPage: React.FC = () => {
   const values = [
@@ -163,41 +164,9 @@ const AboutPage: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
+          className="mb-16"
         >
-          <h2 className="text-3xl font-display font-bold text-gray-900 mb-8 text-center">
-            Meet Our Expert Team
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card className="text-center h-full">
-                  <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-primary-200 to-secondary-200 rounded-full flex items-center justify-center">
-                    <span className="text-3xl font-bold text-white">
-                      {member.name.split(' ').map(n => n[0]).join('')}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    {member.name}
-                  </h3>
-                  <p className="text-primary-600 font-medium mb-2">
-                    {member.role}
-                  </p>
-                  <p className="text-sm text-gray-600 mb-1">
-                    {member.credentials}
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    {member.experience}
-                  </p>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+          <TeamDraggableCards />
         </motion.div>
       </div>
     </div>
