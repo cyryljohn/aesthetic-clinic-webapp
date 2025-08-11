@@ -11,7 +11,6 @@ export default function TeamDraggableCards() {
       role: "Medical Director",
       image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=2340&auto=format&fit=crop",
       rotation: "rotate-[-15deg]",
-      imageRotation: "rotate-[-2deg]",
       offsetX: "-translate-x-[52%]",
       offsetY: "-translate-y-[48%]",
       zIndex: "z-10",
@@ -21,7 +20,6 @@ export default function TeamDraggableCards() {
       role: "Lead Aesthetic Physician",
       image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=2340&auto=format&fit=crop",
       rotation: "rotate-[8deg]",
-      imageRotation: "rotate-[1deg]",
       offsetX: "-translate-x-[49%]",
       offsetY: "-translate-y-[51%]",
       zIndex: "z-20",
@@ -31,7 +29,6 @@ export default function TeamDraggableCards() {
       role: "Senior Nurse Injector",
       image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=2387&auto=format&fit=crop",
       rotation: "rotate-[-5deg]",
-      imageRotation: "rotate-[2deg]",
       offsetX: "-translate-x-[51%]",
       offsetY: "-translate-y-[49%]",
       zIndex: "z-[15]",
@@ -41,7 +38,6 @@ export default function TeamDraggableCards() {
       role: "Lead Aesthetic Consultant",
       image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?q=80&w=2387&auto=format&fit=crop",
       rotation: "rotate-[12deg]",
-      imageRotation: "rotate-[-1.5deg]",
       offsetX: "-translate-x-[48%]",
       offsetY: "-translate-y-[52%]",
       zIndex: "z-[25]",
@@ -51,7 +47,6 @@ export default function TeamDraggableCards() {
       role: "Cosmetic Surgeon",
       image: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?q=80&w=2387&auto=format&fit=crop",
       rotation: "rotate-[-8deg]",
-      imageRotation: "rotate-[1.5deg]",
       offsetX: "-translate-x-[50%]",
       offsetY: "-translate-y-[47%]",
       zIndex: "z-[18]",
@@ -61,7 +56,6 @@ export default function TeamDraggableCards() {
       role: "Laser Specialist",
       image: "https://images.unsplash.com/photo-1580281658524-b8e0bbe5751b?q=80&w=2342&auto=format&fit=crop",
       rotation: "rotate-[6deg]",
-      imageRotation: "rotate-[-2.5deg]",
       offsetX: "-translate-x-[53%]",
       offsetY: "-translate-y-[50%]",
       zIndex: "z-[22]",
@@ -71,7 +65,6 @@ export default function TeamDraggableCards() {
       role: "Client Care Coordinator",
       image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=2340&auto=format&fit=crop",
       rotation: "rotate-[-10deg]",
-      imageRotation: "rotate-[2deg]",
       offsetX: "-translate-x-[47%]",
       offsetY: "-translate-y-[53%]",
       zIndex: "z-[12]",
@@ -98,7 +91,7 @@ export default function TeamDraggableCards() {
               key={member.name} 
               className={`absolute w-[420px] p-0 rounded-2xl left-1/2 top-1/2 ${member.offsetX} ${member.offsetY} ${member.rotation} ${member.zIndex}`}
             >
-              <div className={`relative bg-white  p-5 pb-7 shadow-[0_15px_60px_rgba(0,0,0,0.6)] rounded-2xl ${member.imageRotation}`}>
+              <div className="relative bg-white p-5 pb-7 shadow-[0_15px_60px_rgba(0,0,0,0.6)] rounded-2xl">
                 <div className="relative overflow-hidden rounded-lg">
                   <img
                     src={member.image}
