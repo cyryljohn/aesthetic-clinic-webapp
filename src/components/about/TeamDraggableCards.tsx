@@ -11,8 +11,8 @@ export default function TeamDraggableCards() {
       role: "Medical Director",
       image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=2340&auto=format&fit=crop",
       rotation: -12,
-      offsetX: -280,
-      offsetY: -140,
+      offsetX: -80,
+      offsetY: -40,
       zIndex: 10,
     },
     {
@@ -20,8 +20,8 @@ export default function TeamDraggableCards() {
       role: "Lead Aesthetic Physician",
       image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=2340&auto=format&fit=crop",
       rotation: 8,
-      offsetX: -140,
-      offsetY: -70,
+      offsetX: 60,
+      offsetY: 30,
       zIndex: 20,
     },
     {
@@ -29,8 +29,8 @@ export default function TeamDraggableCards() {
       role: "Senior Nurse Injector",
       image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=2387&auto=format&fit=crop",
       rotation: -5,
-      offsetX: -230,
-      offsetY: -80,
+      offsetX: -30,
+      offsetY: 20,
       zIndex: 15,
     },
     {
@@ -38,8 +38,8 @@ export default function TeamDraggableCards() {
       role: "Lead Aesthetic Consultant",
       image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?q=80&w=2387&auto=format&fit=crop",
       rotation: 15,
-      offsetX: -110,
-      offsetY: -160,
+      offsetX: 90,
+      offsetY: -60,
       zIndex: 25,
     },
     {
@@ -47,8 +47,8 @@ export default function TeamDraggableCards() {
       role: "Cosmetic Surgeon",
       image: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?q=80&w=2387&auto=format&fit=crop",
       rotation: -8,
-      offsetX: -180,
-      offsetY: -180,
+      offsetX: 20,
+      offsetY: -80,
       zIndex: 18,
     },
     {
@@ -56,8 +56,8 @@ export default function TeamDraggableCards() {
       role: "Laser Specialist",
       image: "https://images.unsplash.com/photo-1580281658524-b8e0bbe5751b?q=80&w=2342&auto=format&fit=crop",
       rotation: 6,
-      offsetX: -300,
-      offsetY: -90,
+      offsetX: -100,
+      offsetY: 10,
       zIndex: 22,
     },
     {
@@ -65,8 +65,8 @@ export default function TeamDraggableCards() {
       role: "Client Care Coordinator",
       image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=2340&auto=format&fit=crop",
       rotation: -10,
-      offsetX: -80,
-      offsetY: -30,
+      offsetX: 120,
+      offsetY: 70,
       zIndex: 12,
     },
   ];
@@ -92,8 +92,8 @@ export default function TeamDraggableCards() {
               className="absolute w-[420px] p-0 rounded-2xl"
               initialRotation={member.rotation}
               style={{
-                left: '50%',
-                top: '50%',
+                left: '30%',
+                top: '30%',
                 transform: `translate(calc(-50% + ${member.offsetX}px), calc(-50% + ${member.offsetY}px))`,
                 zIndex: member.zIndex,
               }}
