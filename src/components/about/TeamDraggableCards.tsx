@@ -82,10 +82,10 @@ export default function TeamDraggableCards() {
         </p>
       </div>
       
-      <DraggableCardContainer className="relative min-h-[800px] w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl">
+      <DraggableCardContainer className="relative min-h-[800px] w-full overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl">
         <div className="absolute inset-0 bg-black/20 "></div>
         
-        <div className="relative w-full h-full flex items-center justify-center ">
+        <div className="relative w-full h-full">
           {teamMembers.map((member, index) => (
             <DraggableCardBody 
               key={member.name} 
@@ -93,7 +93,7 @@ export default function TeamDraggableCards() {
               initialRotation={member.rotation}
               style={{
                 left: '30%',
-                top: '15%',
+                top: '25%',
                 transform: `translate(calc(-50% + ${member.offsetX}px), calc(-50% + ${member.offsetY}px))`,
                 zIndex: member.zIndex,
               }}
