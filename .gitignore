@@ -32,6 +32,10 @@ lerna-debug.log*
 *.claude
 .claude.json
 CLAUDE.md
+.claude-flow/
+*.claude-flow
+.swarm/
+*.swarm
 
 # IDE files
 .vscode/
