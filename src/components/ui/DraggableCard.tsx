@@ -21,6 +21,7 @@ export const DraggableCardBody = ({
   const mouseY = useMotionValue(0);
   const cardRef = useRef<HTMLDivElement>(null);
   const controls = useAnimationControls();
+  const [isMounted, setIsMounted] = useState(false);
   const [constraints, setConstraints] = useState({
     top: 0,
     left: 0,
@@ -89,7 +90,7 @@ export const DraggableCardBody = ({
           // Animate back to center after a delay
           returnTimeout = setTimeout(() => {
             // Only call controls.start if component is still mounted
-            if (cardRef.current) {
+            if (isMounted && cardRef.current) {
               controls.start({
                 x: 0,
                 y: 0,
@@ -114,9 +115,12 @@ export const DraggableCardBody = ({
       clearInterval(checkBounds);
       clearTimeout(returnTimeout);
     };
-  }, [controls]);
+  }, [controls, isMounted]);
 
   useEffect(() => {
+    // Set mounted state
+    setIsMounted(true);
+    
     // Update constraints when component mounts or window resizes
     const updateConstraints = () => {
       if (typeof window !== "undefined") {
@@ -136,6 +140,7 @@ export const DraggableCardBody = ({
 
     // Clean up
     return () => {
+      setIsMounted(false);
       window.removeEventListener("resize", updateConstraints);
     };
   }, []);
@@ -174,14 +179,17 @@ export const DraggableCardBody = ({
       onDragEnd={(event, info) => {
         document.body.style.cursor = "default";
 
-        controls.start({
-          rotateX: 0,
-          rotateY: 0,
-          transition: {
-            type: "spring",
-            ...springConfig,
-          },
-        });
+        // Ensure component is mounted before calling controls.start
+        if (isMounted && cardRef.current) {
+          controls.start({
+            rotateX: 0,
+            rotateY: 0,
+            transition: {
+              type: "spring",
+              ...springConfig,
+            },
+          });
+        }
         
         const currentVelocityX = velocityX.get();
         const currentVelocityY = velocityY.get();
