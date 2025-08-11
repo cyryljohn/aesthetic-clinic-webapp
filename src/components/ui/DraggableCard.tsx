@@ -63,38 +63,57 @@ export const DraggableCardBody = ({
 
   // Auto-return functionality
   useEffect(() => {
-    const checkBounds = setInterval(() => {
-      if (!cardRef.current) return;
-      
-      const rect = cardRef.current.getBoundingClientRect();
-      const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
-      
-      // Check if card is completely out of viewport
-      const isOutOfBounds = 
-        rect.right < 0 || 
-        rect.left > viewportWidth || 
-        rect.bottom < 0 || 
-        rect.top > viewportHeight;
-      
-      if (isOutOfBounds) {
-        // Animate back to center after a delay
-        setTimeout(() => {
-          controls.start({
-            x: 0,
-            y: 0,
-            transition: {
-              type: "spring",
-              duration: 2,
-              stiffness: 50,
-              damping: 15,
-            },
-          });
-        }, 2000); // Wait 2 seconds before returning
-      }
-    }, 500); // Check every 500ms
+    let checkBounds: NodeJS.Timeout;
+    let returnTimeout: NodeJS.Timeout;
+    
+    // Start checking bounds after component has mounted
+    const startBoundsCheck = () => {
+      checkBounds = setInterval(() => {
+        if (!cardRef.current) return;
+        
+        const rect = cardRef.current.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        
+        // Check if card is completely out of viewport
+        const isOutOfBounds = 
+          rect.right < 0 || 
+          rect.left > viewportWidth || 
+          rect.bottom < 0 || 
+          rect.top > viewportHeight;
+        
+        if (isOutOfBounds) {
+          // Clear any existing timeout
+          clearTimeout(returnTimeout);
+          
+          // Animate back to center after a delay
+          returnTimeout = setTimeout(() => {
+            // Only call controls.start if component is still mounted
+            if (cardRef.current) {
+              controls.start({
+                x: 0,
+                y: 0,
+                transition: {
+                  type: "spring",
+                  duration: 2,
+                  stiffness: 50,
+                  damping: 15,
+                },
+              });
+            }
+          }, 2000); // Wait 2 seconds before returning
+        }
+      }, 500); // Check every 500ms
+    };
+    
+    // Start checking after a small delay to ensure component is mounted
+    const mountTimeout = setTimeout(startBoundsCheck, 100);
 
-    return () => clearInterval(checkBounds);
+    return () => {
+      clearTimeout(mountTimeout);
+      clearInterval(checkBounds);
+      clearTimeout(returnTimeout);
+    };
   }, [controls]);
 
   useEffect(() => {
