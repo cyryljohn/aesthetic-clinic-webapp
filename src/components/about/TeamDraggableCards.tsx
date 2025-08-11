@@ -82,12 +82,7 @@ export default function TeamDraggableCards() {
           {teamMembers.map((member, index) => (
             <DraggableCardBody 
               key={member.name} 
-              className={`absolute w-[420px] p-0 rounded-2xl ${member.rotation} ${member.zIndex}`}
-              style={{
-                left: '50%',
-                top: '50%',
-                transform: 'translate(-50%, -50%)',
-              }}
+              className={`absolute w-[420px] p-0 rounded-2xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${member.rotation} ${member.zIndex}`}
             >
               <div className="relative bg-white p-5 pb-7 shadow-[0_15px_60px_rgba(0,0,0,0.6)] rounded-2xl">
                 <div className={`relative overflow-hidden rounded-lg ${member.imageRotation}`}>
