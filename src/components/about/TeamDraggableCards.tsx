@@ -93,7 +93,7 @@ export default function TeamDraggableCards() {
               initialRotation={member.rotation}
               style={{
                 left: '30%',
-                top: '30%',
+                top: '15%',
                 transform: `translate(calc(-50% + ${member.offsetX}px), calc(-50% + ${member.offsetY}px))`,
                 zIndex: member.zIndex,
               }}
