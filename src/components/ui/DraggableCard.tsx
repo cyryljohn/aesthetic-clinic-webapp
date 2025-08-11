@@ -13,9 +13,13 @@ import {
 export const DraggableCardBody = ({
   className,
   children,
+  initialRotation = 0,
+  style: customStyle,
 }: {
   className?: string;
   children?: React.ReactNode;
+  initialRotation?: number;
+  style?: React.CSSProperties;
 }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -227,6 +231,8 @@ export const DraggableCardBody = ({
         rotateY,
         opacity,
         willChange: "transform",
+        rotate: initialRotation,
+        ...customStyle,
       }}
       animate={controls}
       whileHover={{ scale: 1.02 }}

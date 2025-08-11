@@ -10,64 +10,64 @@ export default function TeamDraggableCards() {
       name: "Dr. Sarah Chen",
       role: "Medical Director",
       image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=2340&auto=format&fit=crop",
-      rotation: "rotate-[-15deg]",
-      offsetX: "-translate-x-[52%]",
-      offsetY: "-translate-y-[48%]",
-      zIndex: "z-10",
+      rotation: -12,
+      offsetX: -80,
+      offsetY: -40,
+      zIndex: 10,
     },
     {
       name: "Dr. Michael Roberts",
       role: "Lead Aesthetic Physician",
       image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=2340&auto=format&fit=crop",
-      rotation: "rotate-[8deg]",
-      offsetX: "-translate-x-[49%]",
-      offsetY: "-translate-y-[51%]",
-      zIndex: "z-20",
+      rotation: 8,
+      offsetX: 60,
+      offsetY: 30,
+      zIndex: 20,
     },
     {
       name: "Jennifer Park",
       role: "Senior Nurse Injector",
       image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=2387&auto=format&fit=crop",
-      rotation: "rotate-[-5deg]",
-      offsetX: "-translate-x-[51%]",
-      offsetY: "-translate-y-[49%]",
-      zIndex: "z-[15]",
+      rotation: -5,
+      offsetX: -30,
+      offsetY: 20,
+      zIndex: 15,
     },
     {
       name: "Maria Silva",
       role: "Lead Aesthetic Consultant",
       image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?q=80&w=2387&auto=format&fit=crop",
-      rotation: "rotate-[12deg]",
-      offsetX: "-translate-x-[48%]",
-      offsetY: "-translate-y-[52%]",
-      zIndex: "z-[25]",
+      rotation: 15,
+      offsetX: 90,
+      offsetY: -60,
+      zIndex: 25,
     },
     {
       name: "Dr. Emily Zhang",
       role: "Cosmetic Surgeon",
       image: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?q=80&w=2387&auto=format&fit=crop",
-      rotation: "rotate-[-8deg]",
-      offsetX: "-translate-x-[50%]",
-      offsetY: "-translate-y-[47%]",
-      zIndex: "z-[18]",
+      rotation: -8,
+      offsetX: 20,
+      offsetY: -80,
+      zIndex: 18,
     },
     {
       name: "Sophie Laurent",
       role: "Laser Specialist",
       image: "https://images.unsplash.com/photo-1580281658524-b8e0bbe5751b?q=80&w=2342&auto=format&fit=crop",
-      rotation: "rotate-[6deg]",
-      offsetX: "-translate-x-[53%]",
-      offsetY: "-translate-y-[50%]",
-      zIndex: "z-[22]",
+      rotation: 6,
+      offsetX: -100,
+      offsetY: 10,
+      zIndex: 22,
     },
     {
       name: "Nina Rodriguez",
       role: "Client Care Coordinator",
       image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=2340&auto=format&fit=crop",
-      rotation: "rotate-[-10deg]",
-      offsetX: "-translate-x-[47%]",
-      offsetY: "-translate-y-[53%]",
-      zIndex: "z-[12]",
+      rotation: -10,
+      offsetX: 120,
+      offsetY: 70,
+      zIndex: 12,
     },
   ];
 
@@ -89,7 +89,14 @@ export default function TeamDraggableCards() {
           {teamMembers.map((member, index) => (
             <DraggableCardBody 
               key={member.name} 
-              className={`absolute w-[420px] border border-red-600 p-0 rounded-2xl left-1/2 top-1/2 ${member.offsetX} ${member.offsetY} ${member.rotation} ${member.zIndex}`}
+              className="absolute w-[420px] p-0 rounded-2xl"
+              initialRotation={member.rotation}
+              style={{
+                left: '50%',
+                top: '50%',
+                transform: `translate(calc(-50% + ${member.offsetX}px), calc(-50% + ${member.offsetY}px))`,
+                zIndex: member.zIndex,
+              }}
             >
               <div className="relative bg-white p-5 pb-7 shadow-[0_15px_60px_rgba(0,0,0,0.6)] rounded-2xl">
                 <div className="relative overflow-hidden rounded-lg">
