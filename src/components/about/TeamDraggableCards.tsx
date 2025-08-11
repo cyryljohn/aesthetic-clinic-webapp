@@ -89,7 +89,7 @@ export default function TeamDraggableCards() {
           {teamMembers.map((member, index) => (
             <DraggableCardBody 
               key={member.name} 
-              className="absolute w-[420px] p-0 rounded-2xl"
+              className="absolute w-[420px] p-0 rounded-2xl mt-20"
               initialRotation={member.rotation}
               style={{
                 left: '30%',
