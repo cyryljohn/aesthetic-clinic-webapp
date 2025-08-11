@@ -28,6 +28,10 @@ export const DraggableCardBody = ({
     bottom: 0,
   });
 
+  // Track card position
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
   // physics biatch
   const velocityX = useVelocity(mouseX);
   const velocityY = useVelocity(mouseY);
@@ -56,6 +60,42 @@ export const DraggableCardBody = ({
     useTransform(mouseX, [-300, 0, 300], [0.2, 0, 0.2]),
     springConfig,
   );
+
+  // Auto-return functionality
+  useEffect(() => {
+    const checkBounds = setInterval(() => {
+      if (!cardRef.current) return;
+      
+      const rect = cardRef.current.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      
+      // Check if card is completely out of viewport
+      const isOutOfBounds = 
+        rect.right < 0 || 
+        rect.left > viewportWidth || 
+        rect.bottom < 0 || 
+        rect.top > viewportHeight;
+      
+      if (isOutOfBounds) {
+        // Animate back to center after a delay
+        setTimeout(() => {
+          controls.start({
+            x: 0,
+            y: 0,
+            transition: {
+              type: "spring",
+              duration: 2,
+              stiffness: 50,
+              damping: 15,
+            },
+          });
+        }, 2000); // Wait 2 seconds before returning
+      }
+    }, 500); // Check every 500ms
+
+    return () => clearInterval(checkBounds);
+  }, [controls]);
 
   useEffect(() => {
     // Update constraints when component mounts or window resizes
@@ -108,6 +148,7 @@ export const DraggableCardBody = ({
       ref={cardRef}
       drag
       dragConstraints={constraints}
+      dragElastic={0.2}
       onDragStart={() => {
         document.body.style.cursor = "grabbing";
       }}
@@ -122,6 +163,7 @@ export const DraggableCardBody = ({
             ...springConfig,
           },
         });
+        
         const currentVelocityX = velocityX.get();
         const currentVelocityY = velocityY.get();
 
@@ -152,6 +194,8 @@ export const DraggableCardBody = ({
         });
       }}
       style={{
+        x,
+        y,
         rotateX,
         rotateY,
         opacity,
