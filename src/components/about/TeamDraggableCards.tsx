@@ -98,8 +98,8 @@ export default function TeamDraggableCards() {
               key={member.name} 
               className={`absolute w-[420px] p-0 rounded-2xl left-1/2 top-1/2 ${member.offsetX} ${member.offsetY} ${member.rotation} ${member.zIndex}`}
             >
-              <div className="relative bg-white p-5 pb-7 shadow-[0_15px_60px_rgba(0,0,0,0.6)] rounded-2xl">
-                <div className={`relative overflow-hidden rounded-lg ${member.imageRotation}`}>
+              <div className={`relative bg-white p-5 pb-7 shadow-[0_15px_60px_rgba(0,0,0,0.6)] rounded-2xl ${member.imageRotation}`}>
+                <div className="relative overflow-hidden rounded-lg">
                   <img
                     src={member.image}
                     alt={member.name}
